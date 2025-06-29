@@ -38,6 +38,6 @@ public class AutomaticBikeTest {
         assertEquals(0, bike.getAccelerationSpeed());
 
         bike.setGear(1);
-        //assertEquals(, bike.getAccelerationSpeed());
+        assertEquals(16, bike.getAccelerationSpeed());
     }
 }
