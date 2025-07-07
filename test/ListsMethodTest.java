@@ -1,4 +1,5 @@
 import main.ListMethod.ListMethod;
+import main.ListMethod.ListUnderFlowException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ public class ListsMethodTest {
     public void doThisBeforeEachTest(){
         listed = new ListMethod(2);
     }
+
     @Test
     public void TestThatNewList_isEmpty(){
         assertTrue(listed.isEmpty());
@@ -33,6 +35,19 @@ public class ListsMethodTest {
     }
 
     @Test
+    public void addTwiceRemoveThreeTimes_listIsEmpty_shouldThrowException(){
+        listed.add("Happy");
+        listed.add("Justine");
+        assertFalse(listed.isEmpty());
+
+        listed.remove(0);
+        listed.remove(1);
+        assertTrue(listed.isEmpty());
+        assertThrows(ListUnderFlowException.class, () -> listed.remove(2));
+    }
+
+
+    @Test
     public void addTwiceRemoveTwice_listIsEmpty(){
         listed.add("Happy");
         listed.add("Justine");
@@ -52,7 +67,6 @@ public class ListsMethodTest {
         assertEquals("Justine", listed.remove(1));
         assertEquals("Jay", listed.remove(1));
         assertEquals("Happy", listed.remove(0));
-
     }
 
     @Test
@@ -72,7 +86,6 @@ public class ListsMethodTest {
         listed.add("Jay");
 
         assertTrue(listed.remove1("Happy"));
-
     }
 
     @Test
@@ -83,6 +96,7 @@ public class ListsMethodTest {
 
         assertEquals("Justine", listed.get(1));
     }
+
     @Test
     public void addThreeElements_replaceThirdElement(){
         listed.add("Happy");

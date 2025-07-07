@@ -1,11 +1,8 @@
 package main.ListMethod;
 
-import java.util.Arrays;
-
 public class ListMethod {
     private String [] array;
 
-    private boolean isEmpty = false;
     private int count;
     boolean elementMatch;
 
@@ -34,10 +31,11 @@ public class ListMethod {
     }
 
     public String remove(int index) {
+        if(isEmpty()) throw new ListUnderFlowException ();
+
         String element = array[index];
         for (int counter = index; counter < array.length -1; counter++){
             array[counter] = array[counter + 1];
-            //System.out.println(Arrays.toString(array));
         }
         count--;
         return element;
